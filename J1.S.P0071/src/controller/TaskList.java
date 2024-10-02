@@ -14,12 +14,13 @@ public class TaskList {
         System.out.println("Add success!!!");
     }
 
+    public ArrayList<Task> getTaskList() {
+        return taskList;
+    }
 
     // có thể để boolean thay vì dùng while (or dùng getChoice)
-    public void deleteTask() {
+    public void deleteTask(int id) {
         while (true) {
-            int id = Validation.getAnInteger("ID: " , "ID must be from 1 to " + taskList.size(),
-                    1, taskList.size());
             Task task = searchTaskObjectById(id);
             if (task != null) {
                 taskList.remove(task);

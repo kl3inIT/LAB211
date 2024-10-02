@@ -10,7 +10,7 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) {
-        Menu menu = new Menu("======== Task program =========");
+        Menu menu = new Menu("\n======== Task program =========");
         menu.addNewOption("1. Add Task");
         menu.addNewOption("2. Delete Task");
         menu.addNewOption("3. Display Task");
@@ -24,7 +24,7 @@ public class Main {
             choice = menu.getChoice();
             switch (choice) {
                 case 1:
-                    System.out.println("------------Add Task---------------");
+                    System.out.println("\n------------Add Task---------------");
                     String requirementName = Validation.getString("Requirement Name: ", "Requirement Name is required.");
                     int taskTypeId = Validation.getAnInteger("Task Type: ", "Task Type is from 1 to 4", 1, 4);
                     Date date = Validation.getDate("Date: ", "Valid Date Format is dd-MM-yyyy");
@@ -37,12 +37,14 @@ public class Main {
                     id++;
                     break;
                 case 2:
-                    System.out.println("---------Del Task------");
-                    taskList.deleteTask();
+                    System.out.println("\n---------Del Task------");
+                    int idDelete = Validation.getAnInteger("ID: " , "ID must be from 1 to " + taskList.getTaskList().size(),
+                    1, taskList.getTaskList().size());
+                    taskList.deleteTask(idDelete);
                     id--;
                     break;
                 case 3:
-                    System.out.println("----------------------------------------- Task ---------------------------------------");
+                    System.out.println("\n----------------------------------------- Task ---------------------------------------");
                     taskList.getDataTasks();
                     break;
                 case 4:
